@@ -7,11 +7,13 @@
 	let display = ""
 
 
-	function handleEvent(event) {
+	const handleEvent = (event) => {
 		console.log(event.target.value)
 		display += event.target.value
 		display = display
 	}
+
+
 </script>
   
 
@@ -30,3 +32,9 @@
 
 
 
+<style>
+	:global(#display) {
+		grid-area: display;
+	}
+	
+</style>

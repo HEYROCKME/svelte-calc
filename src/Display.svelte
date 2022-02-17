@@ -10,12 +10,16 @@ export let id
 <style>
 
     div {
-        background-color: black;
+        min-height: 50px;
+        background-color: rgb(34, 33, 33);
         color:white;
         display: block;
         padding: 1em;
         text-align: right;
         font-size: 1.6em;
+        border-radius: 10px;
+        box-shadow: inset 0px 0 10px 10px black ;
+        margin-bottom: .2em;
 
     }
 
