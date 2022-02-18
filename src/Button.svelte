@@ -17,10 +17,11 @@
         font-size: 1.6em;
         margin: .1em;
         color: white;
-        background-color: rgb(22, 18, 18);
+        background-color: rgb(62, 54, 54);
         border: none;
         border-radius: 10px;
-        box-shadow: 2px 2px 2px 1px rgba(74, 65, 65, 0.2);
+        box-shadow: 4px -4px 2px 0px aquamarine;
+        /* transform: skewY(15deg); */
        
     }
 
