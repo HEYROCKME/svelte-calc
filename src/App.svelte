@@ -3,14 +3,42 @@
 	import Display from './Display.svelte'
 	import Button from './Button.svelte'
 	import {keypads} from './Keypads.svelte';
+	import {result} from './stores'
+	
+	let display
 
-	let display = ""
+	const unsubscribe = result.subscribe(value => {
+		display = value
+	})
 
+	
+  
+
+
+   
 
 	const handleEvent = (event) => {
-		console.log(event.target.value)
-		display += event.target.value
-		display = display
+		const { target } = event
+		const {value, className, id } = target
+		console.log(className)
+
+		
+        switch (true) {
+			case className.includes('digit') && id != "decimal":
+
+			result.update(screen => screen += value)
+			console.log(target + value)
+				
+				break;
+		
+			default:
+			console.log("case not met")
+				break;
+		}
+
+		// display += event.target.value
+		// display = display
+		
 	}
 
 

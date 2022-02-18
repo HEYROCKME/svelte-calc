@@ -3,11 +3,12 @@
     export let id
     export let value
     export let handling
+    export let className
     
 </script>
 
 
-<button style:grid-area={id} id={id} value={value} on:click={handling}>{value}</button>
+<button class={className} style:grid-area={id} id={id} value={value} on:click={handling}>{value}</button>
 
 
 <style>
