@@ -10,7 +10,8 @@
         margin: 5em auto 0 ;
         padding: 1em;
         width: 50%;
-        min-width: 300px;
+        min-width: 350px;
+        max-width: 600px;
         height: 60vh;
         min-height: 500px;
         background-color: rgb(68, 64, 59);

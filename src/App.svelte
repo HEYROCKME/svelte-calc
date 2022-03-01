@@ -11,9 +11,7 @@
 	const unsubscribe = result.subscribe(value => {
 		display = value
 	})
-
 	
-  
 
    const updateScreen = (value) => {
 	   display === "0" ? result.set("") : null
@@ -25,29 +23,38 @@
 
    }
 
+   const handleOperator = (value) => {
+	console.log("operator " + value)
+	updateScreen(value)
+   }
+
+
+   const handleEquals = () => {
+	   console.log("EQUALS!")
+   }
+
 	const handleEvent = (event) => {
 		const { target } = event
-		const {value, className, id } = target
-		
-
+		const {value, className, id } = target		
 		
         switch (true) {
 			case className.includes('digit') && id != "decimal":
-
-			updateScreen(value)
-			
-			break;
+			  updateScreen(value)
+			  break;
 			
 			case className.includes('operator') :	
-			console.log("operator " + value)
-			break
+			  handleOperator(value)
+			  break
 		
-			case value ==="CLR" :
-			console.log("clear")
-			clearAll()
+			case value === "CLR" :
+			  console.log("clear")
+			  clearAll()
+			  break
 
-   
-			break
+			case className.includes("equals") :
+			  handleEquals()
+			  break
+
 
 			default:
 			console.log("case not met")
@@ -81,6 +88,9 @@
 <style>
 	:global(#display) {
 		grid-area: display;
+	}
+	:global(body) {
+		background-color: salmon;
 	}
 	
 </style>
