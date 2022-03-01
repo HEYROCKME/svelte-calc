@@ -59,11 +59,7 @@
 			default:
 			console.log("case not met")
 				break;
-		}
-
-		// display += event.target.value
-		// display = display
-		
+		}		
 	}
 
 
