@@ -6,6 +6,7 @@
 	import {result} from './stores'
 	
 	let display
+	$: updateDisplay = display
 
 	const unsubscribe = result.subscribe(value => {
 		display = value
@@ -14,23 +15,40 @@
 	
   
 
+   const updateScreen = (value) => {
+	   display === "0" ? result.set("") : null
+	result.update(screen => screen += value)
+   }
 
-   
+   const clearAll = () => {
+	   result.set("0")
+
+   }
 
 	const handleEvent = (event) => {
 		const { target } = event
 		const {value, className, id } = target
-		console.log(className)
+		
 
 		
         switch (true) {
 			case className.includes('digit') && id != "decimal":
 
-			result.update(screen => screen += value)
-			console.log(target + value)
-				
-				break;
+			updateScreen(value)
+			
+			break;
+			
+			case className.includes('operator') :	
+			console.log("operator " + value)
+			break
 		
+			case value ==="CLR" :
+			console.log("clear")
+			clearAll()
+
+   
+			break
+
 			default:
 			console.log("case not met")
 				break;
@@ -48,7 +66,7 @@
 <main>
 
 	<Calculator>
-		<Display id="display" displayValue={display} />
+		<Display id="display" displayValue={updateDisplay} />
 
 		   {#each keypads as keypad}
 		  <Button value={keypad.value} className={keypad.class} id={keypad.id} handling={(e) => handleEvent(e)} />

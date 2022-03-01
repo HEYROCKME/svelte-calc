@@ -1,6 +1,16 @@
 <script>
-export let displayValue = "0"
+// import { afterUpdate } from 'svelte';
+// import {result} from './stores'
+
+export let displayValue
 export let id
+
+
+// afterUpdate(() => {
+//     const unsubscribe = result.subscribe(value => {
+// 		display = value
+// 	})
+// });
 
 
 
@@ -12,11 +22,12 @@ export let id
 </script>
 
 
-<div id={id}>{displayValue}</div>
+<!-- <div id={id}>{displayValue}</div> -->
+<input id={id} type="text" bind:value={displayValue} />
 
 <style>
 
-    div {
+    input {
         height: 75px;
         background-color: rgb(34, 33, 33);
         color:white;
@@ -24,6 +35,7 @@ export let id
         padding: 1em;
         text-align: right;
         font-size: 1.6em;
+        border: none;
         border-radius: 10px;
         box-shadow: inset 0px 0 10px 10px black ;
         margin-bottom: .2em;
