@@ -13,7 +13,7 @@ export const keypads = [
     { value: '1', class: 'digit', id: 'one' },
     { value: '2', class: 'digit', id: 'two' },
     { value: '3', class: 'digit', id: 'three' },
-    { value: '.', class: 'digit', id: 'decimal' },
+    { value: '.', class: 'decimal', id: 'decimal' },
     { value: '0', class: 'digit', id: 'zero' },
     { value: '=', class: 'equals', id: 'equals' },
     { value: 'CLR', class: 'clear', id: 'clear' },

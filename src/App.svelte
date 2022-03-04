@@ -8,29 +8,62 @@
 	let display
 	$: updateDisplay = display
 
-	const unsubscribe = result.subscribe(value => {
+	
+	let init = true
+
+	
+
+
+	result.subscribe(value => {
 		display = value
 	})
 	
+   const checkInit = (value) => {
+
+   }
 
    const updateScreen = (value) => {
-	   display === "0" ? result.set("") : null
-	result.update(screen => screen += value)
+	if (init)  {
+		result.set("")
+		init = false
+	}
+	result.update(screen => screen += value ) 
+	    
+	
    }
 
    const clearAll = () => {
 	   result.set("0")
-
    }
 
    const handleOperator = (value) => {
-	console.log("operator " + value)
+	console.log("operator " + value)	
 	updateScreen(value)
    }
 
 
    const handleEquals = () => {
-	   console.log("EQUALS!")
+	   
+	let expression = display.replace(/(^0*)/,"")
+	console.log(expression)
+   }
+
+   const handleDecimal = (decimal) => {
+	   console.log(decimal)
+	   updateScreen(decimal)
+   }
+
+   const handleDigit = (clicked) => {
+	  
+	 updateScreen(clicked)
+   }
+
+   const handleZero = (zero) => {
+
+   }
+
+   const calculate = () => {
+
    }
 
 	const handleEvent = (event) => {
@@ -39,7 +72,10 @@
 		
         switch (true) {
 			case className.includes('digit') && id != "decimal":
-			  updateScreen(value)
+
+			value === "0" ?  handleZero(value) : handleDigit(value)  
+
+			console.log(value, "display " + display)
 			  break;
 			
 			case className.includes('operator') :	
@@ -53,6 +89,10 @@
 
 			case className.includes("equals") :
 			  handleEquals()
+			  break
+			
+			case className.includes("decimal") :
+			  handleDecimal(value)
 			  break
 
 
